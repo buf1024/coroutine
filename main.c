@@ -23,10 +23,16 @@ test(struct schedule *S) {
 
 	int co1 = coroutine_new(S, foo, &arg1);
 	int co2 = coroutine_new(S, foo, &arg2);
+	int co3 = coroutine_new(S, foo, &arg2);
+	int co4 = coroutine_new(S, foo, &arg2);
+	int co5 = coroutine_new(S, foo, &arg2);
 	printf("main start\n");
 	while (coroutine_status(S,co1) && coroutine_status(S,co2)) {
 		coroutine_resume(S,co1);
 		coroutine_resume(S,co2);
+		coroutine_resume(S,co3);
+		coroutine_resume(S,co4);
+		coroutine_resume(S,co5);
 	} 
 	printf("main end\n");
 }
