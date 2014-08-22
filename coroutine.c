@@ -132,8 +132,8 @@ coroutine_resume(struct schedule * S, int id) {
 	switch(status) {
 	case COROUTINE_READY:
 		getcontext(&C->ctx);
-		C->ctx.uc_stack.ss_sp = S->stack;
-		C->ctx.uc_stack.ss_size = STACK_SIZE;
+		C->ctx.uc_stack.ss_sp = S->stack; // 设置栈
+		C->ctx.uc_stack.ss_size = STACK_SIZE; // 设置栈大小
 		C->ctx.uc_link = &S->main; // 下个切换的上下文状态，由swapcontext设置其值
 		S->running = id;
 		C->status = COROUTINE_RUNNING;
