@@ -1,15 +1,15 @@
 /**
- * ±¾Ğ­³Ì¿âÀ´×Ô·çÔÆ´ó¸ç, »ùÓÚucontext£¬½Ó¿Ú»ù±¾Ä£·ÂluaĞ­³Ì£¬±È½ÏÈİÒ×¶®¡£
- * ÏêÏ¸: http://blog.codingnow.com/2012/07/c_coroutine.html
+ * æœ¬åç¨‹åº“æ¥è‡ªé£äº‘å¤§å“¥, åŸºäºucontextï¼Œæ¥å£åŸºæœ¬æ¨¡ä»¿luaåç¨‹ï¼Œæ¯”è¾ƒå®¹æ˜“æ‡‚ã€‚
+ * è¯¦ç»†: http://blog.codingnow.com/2012/07/c_coroutine.html
  *
- * ±È½ÏµÍ¼¶µÄĞ­³Ì¿â(Protothreads)£¬¿á¿ÇÓĞ±È½ÏÏêÏ¸µÄ½éÉÜ£¬°üÀ¨Ğ­³Ì¿â×÷Õß¡£
- * ÏêÏ¸: http://coolshell.cn/articles/10975.html
+ * æ¯”è¾ƒä½çº§çš„åç¨‹åº“(Protothreads)ï¼Œé…·å£³æœ‰æ¯”è¾ƒè¯¦ç»†çš„ä»‹ç»ï¼ŒåŒ…æ‹¬åç¨‹åº“ä½œè€…ã€‚
+ * è¯¦ç»†: http://coolshell.cn/articles/10975.html
  */
 
 #ifndef C_COROUTINE_H
 #define C_COROUTINE_H
 
-// Ğ­³Ì×´Ì¬
+// åç¨‹çŠ¶æ€
 #define COROUTINE_DEAD    0
 #define COROUTINE_READY   1
 #define COROUTINE_RUNNING 2
@@ -19,20 +19,20 @@ struct schedule;
 
 typedef void (*coroutine_func)(struct schedule *, void *ud);
 
-// ´´½¨Ğ­³ÌÕ{¶È½á¹¹
+// åˆ›å»ºåç¨‹èª¿åº¦ç»“æ„
 struct schedule * coroutine_open(void);
-// Ïú»ÙĞ­³ÌÕ{¶È½á¹¹
+// é”€æ¯åç¨‹èª¿åº¦ç»“æ„
 void coroutine_close(struct schedule *);
 
-// ´´½¨Ò»¸öĞÂµÄĞ­³Ì
+// åˆ›å»ºä¸€ä¸ªæ–°çš„åç¨‹
 int coroutine_new(struct schedule *, coroutine_func, void *ud);
-// resumeÒ»¸öĞ­³Ì
+// resumeä¸€ä¸ªåç¨‹
 void coroutine_resume(struct schedule *, int id);
-// »ñÈ¡Ğ­³ÌµÄ×´Ì¬
+// è·å–åç¨‹çš„çŠ¶æ€
 int coroutine_status(struct schedule *, int id);
-// »ñÈ¡µ±Ç°ÔËĞĞµÄĞ­³Ì
+// è·å–å½“å‰è¿è¡Œçš„åç¨‹
 int coroutine_running(struct schedule *);
-// yieldÒ»¸öĞ­³Ì
+// yieldä¸€ä¸ªåç¨‹
 void coroutine_yield(struct schedule *);
 
 #endif
